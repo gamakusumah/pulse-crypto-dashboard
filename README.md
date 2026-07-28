@@ -13,6 +13,7 @@ See [`docs/`](./docs) for the full documentation set:
 - [API.md](./docs/API.md) — endpoint-by-endpoint contract (input/output/mapper/query)
 - [COMPONENTS.md](./docs/COMPONENTS.md) — reusable component catalog with props
 - [THEME.md](./docs/THEME.md) — design tokens and light/dark theming
+- [I18N.md](./docs/I18N.md) — English/Indonesian language support
 - [CONTRIBUTING.md](./docs/CONTRIBUTING.md) — coding standards and workflow
 
 ## Tech Stack
@@ -32,6 +33,7 @@ See [`docs/`](./docs) for the full documentation set:
 | Icons                                    | Lucide React                                                               |
 | Class utilities                            | clsx, class-variance-authority, tailwind-merge                              |
 | Theming                                       | next-themes                                                                    |
+| Internationalization                            | i18next + react-i18next (English (US) + Indonesian)                             |
 | Market data                                     | CoinGecko public API                                                            |
 
 ## Prerequisites

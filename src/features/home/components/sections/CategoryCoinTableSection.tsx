@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SectionTitle } from '@/components/common/SectionTitle';
 import { LoadingSkeleton } from '@/components/common/LoadingSkeleton';
 import { ErrorState } from '@/components/common/ErrorState';
@@ -9,6 +10,7 @@ import { useCategories, useMarkets } from '@/features/home/hooks';
 import { PAGINATION } from '@/constants/api';
 
 export function CategoryCoinTableSection() {
+  const { t } = useTranslation();
   const [category, setCategory] = useState<string>(CATEGORY_ALL_VALUE);
   const [page, setPage] = useState(1);
 
@@ -25,7 +27,10 @@ export function CategoryCoinTableSection() {
 
   return (
     <section aria-labelledby="markets-heading" className="space-y-3">
-      <SectionTitle title="Markets" description="Peringkat koin berdasarkan kapitalisasi pasar" />
+      <SectionTitle
+        title={t('home.categoryMarket.title')}
+        description={t('home.categoryMarket.description')}
+      />
 
       {categoriesQuery.isPending ? (
         <LoadingSkeleton variant="text" className="h-8 w-full" />
@@ -53,7 +58,10 @@ export function CategoryCoinTableSection() {
           onPageChange={setPage}
         />
       ) : (
-        <EmptyState title="Tidak ada koin ditemukan" description="Coba pilih kategori lain." />
+        <EmptyState
+          title={t('home.categoryMarket.emptyTitle')}
+          description={t('home.categoryMarket.emptyDescription')}
+        />
       )}
     </section>
   );

@@ -1,0 +1,81 @@
+{
+  "common": {
+    "retry": "Coba Lagi",
+    "justNow": "baru saja"
+  },
+  "emptyState": {
+    "defaultTitle": "Belum ada data",
+    "defaultDescription": "Data akan muncul di sini setelah tersedia."
+  },
+  "errorState": {
+    "defaultTitle": "Gagal memuat data",
+    "defaultDescription": "Terjadi kesalahan saat mengambil data. Silakan coba lagi."
+  },
+  "themeToggle": {
+    "toggle": "Ubah tema",
+    "enableLight": "Aktifkan mode terang",
+    "enableDark": "Aktifkan mode gelap"
+  },
+  "languageToggle": {
+    "label": "Bahasa",
+    "switchTo": "Ganti ke Bahasa {{language}}",
+    "languages": {
+      "en": "Inggris",
+      "id": "Indonesia"
+    }
+  },
+  "header": {
+    "logoAriaLabel": "Pulse, beranda",
+    "searchPlaceholder": "Cari koin, kategori...",
+    "searchAriaLabel": "Cari koin"
+  },
+  "home": {
+    "globalMarket": {
+      "title": "Global Market Overview",
+      "description": "Ringkasan kondisi pasar kripto secara keseluruhan",
+      "totalMarketCap": "Total Market Cap",
+      "volume24h": "Volume 24 Jam",
+      "btcDominance": "Dominasi BTC",
+      "ethDominance": "Dominasi ETH",
+      "updating": "Memperbarui data pasar…"
+    },
+    "trendingGainersLosers": {
+      "ariaLabel": "Trending, Top Gainers, dan Top Losers",
+      "trending": "Trending",
+      "topGainers": "Top Gainers",
+      "topLosers": "Top Losers",
+      "emptyTrending": "Belum ada coin trending",
+      "emptyGainers": "Belum ada data top gainers",
+      "emptyLosers": "Belum ada data top losers"
+    },
+    "categoryMarket": {
+      "title": "Markets",
+      "description": "Peringkat koin berdasarkan kapitalisasi pasar",
+      "allTab": "Semua",
+      "tabsAriaLabel": "Filter berdasarkan kategori",
+      "emptyTitle": "Tidak ada koin ditemukan",
+      "emptyDescription": "Coba pilih kategori lain."
+    },
+    "table": {
+      "rank": "#",
+      "coin": "Coin",
+      "price": "Harga",
+      "change1h": "1j",
+      "change24h": "24j",
+      "change7d": "7h",
+      "marketCap": "Market Cap",
+      "volume": "Volume",
+      "sparkline": "Grafik 7h",
+      "page": "Halaman {{page}}",
+      "prevPage": "Halaman sebelumnya",
+      "nextPage": "Halaman berikutnya"
+    },
+    "sidebar": {
+      "ariaLabel": "Insights dan berita terkini",
+      "insightsTitle": "Insights",
+      "newsTitle": "Berita Terkini",
+      "emptyInsights": "Belum ada insight",
+      "emptyNews": "Belum ada berita"
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "common": {
+    "retry": "Retry",
+    "justNow": "just now"
+  },
+  "emptyState": {
+    "defaultTitle": "No data yet",
+    "defaultDescription": "Data will appear here once it's available."
+  },
+  "errorState": {
+    "defaultTitle": "Failed to load data",
+    "defaultDescription": "Something went wrong while fetching data. Please try again."
+  },
+  "themeToggle": {
+    "toggle": "Toggle theme",
+    "enableLight": "Switch to light mode",
+    "enableDark": "Switch to dark mode"
+  },
+  "languageToggle": {
+    "label": "Language",
+    "switchTo": "Switch to {{language}}",
+    "languages": {
+      "en": "English",
+      "id": "Indonesian"
+    }
+  },
+  "header": {
+    "logoAriaLabel": "Pulse, home",
+    "searchPlaceholder": "Search coins, categories...",
+    "searchAriaLabel": "Search coins"
+  },
+  "home": {
+    "globalMarket": {
+      "title": "Global Market Overview",
+      "description": "A snapshot of the overall crypto market",
+      "totalMarketCap": "Total Market Cap",
+      "volume24h": "24h Volume",
+      "btcDominance": "BTC Dominance",
+      "ethDominance": "ETH Dominance",
+      "updating": "Updating market data…"
+    },
+    "trendingGainersLosers": {
+      "ariaLabel": "Trending, Top Gainers, and Top Losers",
+      "trending": "Trending",
+      "topGainers": "Top Gainers",
+      "topLosers": "Top Losers",
+      "emptyTrending": "No trending coins yet",
+      "emptyGainers": "No top gainers data yet",
+      "emptyLosers": "No top losers data yet"
+    },
+    "categoryMarket": {
+      "title": "Markets",
+      "description": "Coins ranked by market cap",
+      "allTab": "All",
+      "tabsAriaLabel": "Filter by category",
+      "emptyTitle": "No coins found",
+      "emptyDescription": "Try selecting a different category."
+    },
+    "table": {
+      "rank": "#",
+      "coin": "Coin",
+      "price": "Price",
+      "change1h": "1h",
+      "change24h": "24h",
+      "change7d": "7d",
+      "marketCap": "Market Cap",
+      "volume": "Volume",
+      "sparkline": "7d Chart",
+      "page": "Page {{page}}",
+      "prevPage": "Previous page",
+      "nextPage": "Next page"
+    },
+    "sidebar": {
+      "ariaLabel": "Insights and latest news",
+      "insightsTitle": "Insights",
+      "newsTitle": "Latest News",
+      "emptyInsights": "No insights yet",
+      "emptyNews": "No news yet"
+    }
+  }
+}

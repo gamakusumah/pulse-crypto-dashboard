@@ -1,7 +1,13 @@
+import { useTranslation } from 'react-i18next';
 import type { NewsItem } from '@/features/home/types';
 import { formatDate } from '@/utils';
 
 export function NewsCard({ item }: { item: NewsItem }) {
+  // Subscribing here (even without using `t` for other text) makes
+  // this component re-render when the language changes, so the
+  // relative "time ago" label from `formatDate` stays in sync.
+  useTranslation();
+
   return (
     <a
       href={item.url}

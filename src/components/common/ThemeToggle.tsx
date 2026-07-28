@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { useTranslation } from 'react-i18next';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -9,6 +10,7 @@ import { Button } from '@/components/ui/button';
  * inline anti-FOUC script in `index.html`.
  */
 export function ThemeToggle() {
+  const { t } = useTranslation();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -17,7 +19,7 @@ export function ThemeToggle() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <Button variant="ghost" size="icon" aria-label="Toggle theme" disabled />;
+    return <Button variant="ghost" size="icon" aria-label={t('themeToggle.toggle')} disabled />;
   }
 
   const isDark = resolvedTheme === 'dark';
@@ -26,7 +28,7 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      aria-label={isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap'}
+      aria-label={isDark ? t('themeToggle.enableLight') : t('themeToggle.enableDark')}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
     >
       {isDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}

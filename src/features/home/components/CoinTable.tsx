@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   flexRender,
   getCoreRowModel,
@@ -33,13 +34,14 @@ export interface CoinTableProps {
  * behave in practice.
  */
 export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }: CoinTableProps) {
+  const { t } = useTranslation();
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const columns = useMemo<ColumnDef<MarketCoin>[]>(
     () => [
       {
         id: 'rank',
-        header: '#',
+        header: t('home.table.rank'),
         accessorKey: 'rank',
         cell: ({ getValue }) => (
           <span className="font-mono text-xs text-muted-foreground">
@@ -49,7 +51,7 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
       },
       {
         id: 'coin',
-        header: 'Coin',
+        header: t('home.table.coin'),
         accessorKey: 'name',
         cell: ({ row }) => (
           <div className="flex min-w-0 items-center gap-2.5">
@@ -65,31 +67,31 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
       },
       {
         id: 'price',
-        header: 'Price',
+        header: t('home.table.price'),
         accessorKey: 'priceUsd',
         cell: ({ getValue }) => <CoinPrice value={getValue<number | null>()} />,
       },
       {
         id: '1h',
-        header: '1h',
+        header: t('home.table.change1h'),
         accessorKey: 'priceChangePercentage1h',
         cell: ({ getValue }) => <PriceChange value={getValue<number | null>()} showIcon={false} />,
       },
       {
         id: '24h',
-        header: '24h',
+        header: t('home.table.change24h'),
         accessorKey: 'priceChangePercentage24h',
         cell: ({ getValue }) => <PriceChange value={getValue<number | null>()} showIcon={false} />,
       },
       {
         id: '7d',
-        header: '7d',
+        header: t('home.table.change7d'),
         accessorKey: 'priceChangePercentage7d',
         cell: ({ getValue }) => <PriceChange value={getValue<number | null>()} showIcon={false} />,
       },
       {
         id: 'marketCap',
-        header: 'Market Cap',
+        header: t('home.table.marketCap'),
         accessorKey: 'marketCapUsd',
         cell: ({ getValue }) => (
           <span className="font-mono text-xs tabular-nums text-foreground">
@@ -99,7 +101,7 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
       },
       {
         id: 'volume',
-        header: 'Volume',
+        header: t('home.table.volume'),
         accessorKey: 'volumeUsd',
         cell: ({ getValue }) => (
           <span className="font-mono text-xs tabular-nums text-muted-foreground">
@@ -109,13 +111,13 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
       },
       {
         id: 'sparkline',
-        header: '7d Chart',
+        header: t('home.table.sparkline'),
         accessorKey: 'sparkline',
         enableSorting: false,
         cell: ({ getValue }) => <SparklineChart data={getValue<number[]>()} />,
       },
     ],
-    [],
+    [t],
   );
 
   const table = useReactTable({
@@ -181,12 +183,12 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
       </div>
 
       <div className="flex items-center justify-between border-t border-border px-3 py-2.5">
-        <span className="text-xs text-muted-foreground">Halaman {page}</span>
+        <span className="text-xs text-muted-foreground">{t('home.table.page', { page })}</span>
         <div className="flex items-center gap-1">
           <Button
             variant="outline"
             size="icon"
-            aria-label="Halaman sebelumnya"
+            aria-label={t('home.table.prevPage')}
             disabled={page <= 1}
             onClick={() => onPageChange(page - 1)}
           >
@@ -195,7 +197,7 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
           <Button
             variant="outline"
             size="icon"
-            aria-label="Halaman berikutnya"
+            aria-label={t('home.table.nextPage')}
             disabled={!hasNextPage}
             onClick={() => onPageChange(page + 1)}
           >

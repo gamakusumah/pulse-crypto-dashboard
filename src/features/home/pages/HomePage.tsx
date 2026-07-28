@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   HomeHeader,
   GlobalMarketSection,
@@ -8,6 +9,8 @@ import {
 } from '@/features/home/components';
 
 export function HomePage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <HomeHeader />
@@ -20,7 +23,7 @@ export function HomePage() {
             <CategoryCoinTableSection />
           </div>
 
-          <aside className="space-y-6" aria-label="Insights dan berita terkini">
+          <aside className="space-y-6" aria-label={t('home.sidebar.ariaLabel')}>
             <InsightsSection />
             <NewsSection />
           </aside>

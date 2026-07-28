@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { LoadingSkeleton } from '@/components/common/LoadingSkeleton';
 import { ErrorState } from '@/components/common/ErrorState';
@@ -8,20 +9,21 @@ import { useTrending, useTopGainersLosers } from '@/features/home/hooks';
 import type { MarketCoin, TrendingCoin } from '@/features/home/types';
 
 export function TrendingGainersLosersSection() {
+  const { t } = useTranslation();
   const trending = useTrending();
   const gainersLosers = useTopGainersLosers();
 
   return (
     <section
-      aria-label="Trending, Top Gainers, dan Top Losers"
+      aria-label={t('home.trendingGainersLosers.ariaLabel')}
       className="grid gap-3 lg:grid-cols-3"
     >
       <CoinListCard
-        title="Trending"
+        title={t('home.trendingGainersLosers.trending')}
         isPending={trending.isPending}
         isError={trending.isError}
         onRetry={() => void trending.refetch()}
-        emptyLabel="Belum ada coin trending"
+        emptyLabel={t('home.trendingGainersLosers.emptyTrending')}
       >
         {trending.data?.map((coin, index) => (
           <TrendingRow key={coin.id} rank={index + 1} coin={coin} />
@@ -29,11 +31,11 @@ export function TrendingGainersLosersSection() {
       </CoinListCard>
 
       <CoinListCard
-        title="Top Gainers"
+        title={t('home.trendingGainersLosers.topGainers')}
         isPending={gainersLosers.isPending}
         isError={gainersLosers.isError}
         onRetry={() => void gainersLosers.refetch()}
-        emptyLabel="Belum ada data top gainers"
+        emptyLabel={t('home.trendingGainersLosers.emptyGainers')}
       >
         {gainersLosers.data?.gainers.map((coin) => (
           <MarketRow key={coin.id} coin={coin} />
@@ -41,11 +43,11 @@ export function TrendingGainersLosersSection() {
       </CoinListCard>
 
       <CoinListCard
-        title="Top Losers"
+        title={t('home.trendingGainersLosers.topLosers')}
         isPending={gainersLosers.isPending}
         isError={gainersLosers.isError}
         onRetry={() => void gainersLosers.refetch()}
-        emptyLabel="Belum ada data top losers"
+        emptyLabel={t('home.trendingGainersLosers.emptyLosers')}
       >
         {gainersLosers.data?.losers.map((coin) => (
           <MarketRow key={coin.id} coin={coin} />

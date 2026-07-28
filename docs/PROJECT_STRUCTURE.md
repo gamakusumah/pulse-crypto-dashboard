@@ -67,6 +67,7 @@ src/
 │   │   ├── EmptyState.tsx
 │   │   ├── ErrorState.tsx
 │   │   ├── ThemeToggle.tsx
+│   │   ├── LanguageToggle.tsx
 │   │   └── index.ts
 │   └── layout/                   # Reserved for future shared layout pieces
 │       (empty for now — Home Page owns its own header via `common/PageHeader`)
@@ -84,7 +85,12 @@ src/
 ├── hooks/                        # Cross-feature reusable hooks (none yet — reserved)
 ├── lib/
 │   ├── utils.ts                  # cn() — clsx + tailwind-merge
-│   └── queryClient.ts            # Global QueryClient with app-wide defaults
+│   ├── queryClient.ts            # Global QueryClient with app-wide defaults
+│   └── i18n.ts                   # i18next init, language detection + persistence
+│
+├── locales/
+│   ├── en/translation.json       # English (US) UI strings
+│   └── id/translation.json       # Indonesian UI strings
 │
 ├── types/
 │   └── common.ts                 # Cross-feature shared types (pagination, sorting)
@@ -93,7 +99,7 @@ src/
 │   ├── formatCurrency.ts
 │   ├── formatNumber.ts
 │   ├── formatPercentage.ts
-│   ├── formatDate.ts
+│   ├── formatDate.ts             # Locale-aware via i18n.language (Intl.RelativeTimeFormat)
 │   ├── getPriceColor.ts
 │   └── index.ts
 │
@@ -101,7 +107,8 @@ src/
 │   ├── api.ts                    # Base URL, timeout, pagination, home page limits
 │   ├── queryKeys.ts               # Typed TanStack Query key factory
 │   ├── routes.ts                   # Route path constants (Home, Coin, Exchange)
-│   └── theme.ts                     # Theme storage key + theme enum
+│   ├── theme.ts                     # Theme storage key + theme enum
+│   └── i18n.ts                       # Language storage key + supported languages
 │
 ├── styles/
 │   └── globals.css                 # Tailwind v4 import + design tokens (@theme)

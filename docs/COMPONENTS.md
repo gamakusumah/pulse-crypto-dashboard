@@ -141,6 +141,15 @@ a retry path.
 No props. Reads/writes theme via `next-themes`' `useTheme()`; renders a
 disabled placeholder until mounted to avoid a hydration flash.
 
+### `LanguageToggle`
+
+```tsx
+<LanguageToggle />
+```
+No props. Toggles between English and Indonesian via `react-i18next`'s
+`useTranslation()` / `i18n.changeLanguage()`. See
+[I18N.md](./I18N.md) for the full setup.
+
 ---
 
 ## `features/home/components` — Feature-Scoped Reusable Components
