@@ -1,0 +1,41 @@
+import { AlertTriangle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+
+export interface ErrorStateProps {
+  title?: string;
+  description?: string;
+  onRetry?: () => void;
+  className?: string;
+}
+
+/**
+ * Reusable failure state with a mandatory-by-convention retry action.
+ * Every data section on the Home Page wires its query's `refetch`
+ * into `onRetry` so a transient network error never dead-ends the UI.
+ */
+export function ErrorState({
+  title = 'Gagal memuat data',
+  description = 'Terjadi kesalahan saat mengambil data. Silakan coba lagi.',
+  onRetry,
+  className,
+}: ErrorStateProps) {
+  return (
+    <div
+      role="alert"
+      className={cn(
+        'flex flex-col items-center justify-center gap-2 rounded-xl border border-danger/30 bg-danger/5 px-4 py-10 text-center',
+        className,
+      )}
+    >
+      <AlertTriangle className="h-6 w-6 text-danger" aria-hidden="true" />
+      <p className="text-sm font-medium text-foreground">{title}</p>
+      <p className="max-w-xs text-xs text-muted-foreground">{description}</p>
+      {onRetry ? (
+        <Button variant="outline" size="sm" onClick={onRetry} className="mt-2">
+          Coba Lagi
+        </Button>
+      ) : null}
+    </div>
+  );
+}

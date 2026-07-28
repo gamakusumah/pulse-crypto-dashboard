@@ -1,0 +1,15 @@
+export { CoinAvatar } from '@/features/home/components/CoinAvatar';
+export { CoinPrice } from '@/features/home/components/CoinPrice';
+export { PriceChange } from '@/features/home/components/PriceChange';
+export { SparklineChart } from '@/features/home/components/SparklineChart';
+export { MarketStatCard } from '@/features/home/components/MarketStatCard';
+export { TrendingCard } from '@/features/home/components/TrendingCard';
+export { CategoryTabs } from '@/features/home/components/CategoryTabs';
+export { CoinTable } from '@/features/home/components/CoinTable';
+export { NewsCard } from '@/features/home/components/NewsCard';
+export { InsightCard } from '@/features/home/components/InsightCard';
+export { HomeHeader } from '@/features/home/components/HomeHeader';
+export { GlobalMarketSection } from '@/features/home/components/sections/GlobalMarketSection';
+export { TrendingGainersLosersSection } from '@/features/home/components/sections/TrendingGainersLosersSection';
+export { CategoryCoinTableSection } from '@/features/home/components/sections/CategoryCoinTableSection';
+export { InsightsSection, NewsSection } from '@/features/home/components/sections/SidebarSections';
