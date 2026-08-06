@@ -14,6 +14,25 @@ import type { MarketCoin } from '@/pages/HomePage/types';
 import type { CoinTableProps } from './CoinTable.type';
 
 /**
+ * Not every column fits on a phone screen at once. Rather than forcing
+ * a full 9-column horizontal scroll on mobile, lower-priority columns
+ * progressively appear at wider breakpoints — `coin`, `price`, and
+ * `24h` (the figures someone actually glances at on a phone) stay
+ * visible at every size. Keys must match the column `id`s below.
+ */
+const RESPONSIVE_COLUMN_CLASS: Record<string, string> = {
+  rank: 'hidden sm:table-cell',
+  coin: '',
+  price: '',
+  '1h': 'hidden md:table-cell',
+  '24h': '',
+  '7d': 'hidden lg:table-cell',
+  marketCap: 'hidden sm:table-cell',
+  volume: 'hidden md:table-cell',
+  sparkline: 'hidden lg:table-cell',
+};
+
+/**
  * Sorting here operates on the currently loaded page only — CoinGecko's
  * `/coins/markets` supports server-side ordering by a limited set of
  * fields, not every visible column, so per-column sort works on the
@@ -116,12 +135,18 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
   return (
     <div className="rounded-xl border border-border">
       <div className="scrollbar-thin overflow-x-auto">
-        <table className="w-full min-w-[820px] border-collapse text-left">
+        <table className="w-full border-collapse text-left">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id} className="border-b border-border">
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="px-3 py-2.5 text-xs font-medium text-muted-foreground">
+                  <th
+                    key={header.id}
+                    className={cn(
+                      'px-3 py-2.5 text-xs font-medium text-muted-foreground',
+                      RESPONSIVE_COLUMN_CLASS[header.column.id],
+                    )}
+                  >
                     {header.isPlaceholder ? null : (
                       <button
                         type="button"
@@ -129,7 +154,7 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
                         onClick={header.column.getToggleSortingHandler()}
                         className={cn(
                           'inline-flex items-center gap-1 whitespace-nowrap',
-                          header.column.getCanSort() && 'cursor-pointer hover:text-foreground',
+                          header.column.getCanSort() ? 'cursor-pointer hover:text-foreground' : 'cursor-default',
                         )}
                       >
                         {flexRender(header.column.columnDef.header, header.getContext())}
@@ -150,7 +175,7 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
             {table.getRowModel().rows.map((row) => (
               <tr key={row.id} className="border-b border-border/60 last:border-0 hover:bg-secondary/30">
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-3 py-2.5">
+                  <td key={cell.id} className={cn('px-3 py-2.5', RESPONSIVE_COLUMN_CLASS[cell.column.id])}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
