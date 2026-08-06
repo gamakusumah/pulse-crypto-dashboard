@@ -2,11 +2,9 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { MainLayout } from '@/app/layouts/MainLayout';
 import { ROUTES } from '@/constants/routes';
-import { LoadingSkeleton } from '@/components/common';
+import { LoadingSkeleton } from '@/components/common/LoadingSkeleton';
 
-const HomePage = lazy(() =>
-  import('@/features/home/pages/HomePage').then((module) => ({ default: module.HomePage })),
-);
+const HomePage = lazy(() => import('@/pages/HomePage').then((module) => ({ default: module.HomePage })));
 
 const router = createBrowserRouter([
   {
@@ -26,7 +24,7 @@ const router = createBrowserRouter([
 
 function RouteFallback() {
   return (
-    <div className="mx-auto max-w-[1440px] px-4 py-6 lg:px-6">
+    <div className="mx-auto max-w-360 px-4 py-6 lg:px-6">
       <LoadingSkeleton variant="card" count={3} />
     </div>
   );

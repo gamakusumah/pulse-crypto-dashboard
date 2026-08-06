@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Languages } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { LANGUAGES, type Language } from '@/constants/i18n';
 
 const NEXT_LANGUAGE: Record<Language, Language> = {
