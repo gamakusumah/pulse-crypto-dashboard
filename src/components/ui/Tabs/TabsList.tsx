@@ -9,7 +9,8 @@ export const TabsList = React.forwardRef<
   <BaseTabs.List
     ref={ref}
     className={cn(
-      'relative flex items-center gap-1 overflow-x-auto scrollbar-thin border-b border-border',
+      'relative flex flex-nowrap items-center gap-1 overflow-x-auto overscroll-x-contain scrollbar-hide border-b border-border max-w-[calc(100vw-32px)] md:max-w-none',
+      '[-webkit-overflow-scrolling:touch]',
       className,
     )}
     {...props}

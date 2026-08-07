@@ -14,6 +14,14 @@ import type { MarketCoin } from '@/pages/HomePage/types';
 import type { CoinTableProps } from './CoinTable.type';
 
 /**
+ * The "Coin" column stays pinned to the left edge while the rest of
+ * the table scrolls horizontally, so it's always clear which row is
+ * which once Rank/1h/7d/Market Cap/Volume/Sparkline have scrolled out
+ * of view on a phone.
+ */
+const STICKY_COIN_COLUMN_CLASS = 'sticky left-0 z-10 bg-background';
+
+/**
  * Sorting here operates on the currently loaded page only — CoinGecko's
  * `/coins/markets` supports server-side ordering by a limited set of
  * fields, not every visible column, so per-column sort works on the
@@ -114,14 +122,20 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
   });
 
   return (
-    <div className="rounded-xl border border-border">
-      <div className="scrollbar-thin overflow-x-auto">
+    <div className="rounded-xl border border-border max-w-[calc(100vw-32px)] md:max-w-none">
+      <div className="scrollbar-thin overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
         <table className="w-full min-w-[820px] border-collapse text-left">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id} className="border-b border-border">
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="px-3 py-2.5 text-xs font-medium text-muted-foreground">
+                  <th
+                    key={header.id}
+                    className={cn(
+                      'px-3 py-2.5 text-xs font-medium text-muted-foreground',
+                      header.column.id === 'coin' && STICKY_COIN_COLUMN_CLASS,
+                    )}
+                  >
                     {header.isPlaceholder ? null : (
                       <button
                         type="button"
@@ -129,7 +143,7 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
                         onClick={header.column.getToggleSortingHandler()}
                         className={cn(
                           'inline-flex items-center gap-1 whitespace-nowrap',
-                          header.column.getCanSort() && 'cursor-pointer hover:text-foreground',
+                          header.column.getCanSort() ? 'cursor-pointer hover:text-foreground' : 'cursor-default',
                         )}
                       >
                         {flexRender(header.column.columnDef.header, header.getContext())}
@@ -150,7 +164,10 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
             {table.getRowModel().rows.map((row) => (
               <tr key={row.id} className="border-b border-border/60 last:border-0 hover:bg-secondary/30">
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-3 py-2.5">
+                  <td
+                    key={cell.id}
+                    className={cn('px-3 py-2.5', cell.column.id === 'coin' && STICKY_COIN_COLUMN_CLASS)}
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
