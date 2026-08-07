@@ -123,10 +123,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-sans:
-    'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono:
-    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
 
 @layer base {
@@ -144,11 +142,7 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings:
-      'cv02',
-      'cv03',
-      'cv04',
-      'cv11';
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
   ::selection {
@@ -169,5 +163,17 @@
   .scrollbar-thin {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  /* Used by horizontally-scrollable, nav-like elements (e.g. Tabs)
+     where a visible scrollbar isn't wanted — the element still
+     scrolls via touch/trackpad/drag, it just doesn't show a bar. */
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
