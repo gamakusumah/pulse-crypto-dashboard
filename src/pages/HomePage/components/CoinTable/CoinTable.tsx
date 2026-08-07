@@ -122,7 +122,7 @@ export function CoinTable({ data, page, hasNextPage, isFetching, onPageChange }:
   });
 
   return (
-    <div className="rounded-xl border border-border">
+    <div className="rounded-xl border border-border max-w-[calc(100vw-40px)] md:max-w-none">
       <div className="scrollbar-thin overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
         <table className="w-full min-w-[820px] border-collapse text-left">
           <thead>
